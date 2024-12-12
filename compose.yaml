@@ -21,6 +21,8 @@ services:
       POSTGRES_DB: shoppingdb
     ports:
       - "5432:5432"
+    volumes:
+      - ./.db-volume:/var/lib/postgresql/data
 
   backendspringboot:
     image: maeddes/backendspringboot:hse24
