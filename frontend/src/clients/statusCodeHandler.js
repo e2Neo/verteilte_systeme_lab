@@ -3,7 +3,6 @@ import { ToastService } from "../services/ToastService";
 
 // Can be used to define custom messages for specific status codes
 export function handleResponse(response) {
-  console.log(response);
   switch (response.status) {
     // Can be extended here with handlers for specific or common status codes
     case 201:
