@@ -66,11 +66,15 @@ async function addNewItem() {
   if (response.status === 200 || response.status === 201) {
     // OpenAPI Documentation says 201 as status code but i get 200 in reality
     visible.value = false;
-    props.updateTable();
+    await props.updateTable();
   }
 }
 function hideNewItemDialog() {
   visible.value = false;
+  item.value = {
+    name: "",
+    amount: null,
+  };
 }
 </script>
 

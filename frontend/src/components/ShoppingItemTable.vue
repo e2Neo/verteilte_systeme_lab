@@ -23,11 +23,11 @@
         ></Column>
         <Column
           :rowEditor="true"
-          style="width: 10%; min-width: 3rem"
+          style="width: 7rem;"
           bodyStyle="text-align:center"
         ></Column>
         <Column
-          style="width: 10%; min-width: 3rem"
+          style="width: 3rem;"
           bodyStyle="text-align:center"
           ><template #body="{ data }">
             <Button
@@ -62,7 +62,7 @@ const showDeleteDialog = ref(false);
 const itemToDelete = ref(null);
 
 onBeforeMount(async () => {
-  updateTable();
+  await updateTable();
 });
 
 async function updateTable() {
@@ -87,7 +87,8 @@ function showDeleteRowDialog(data) {
   showDeleteDialog.value = true;
   itemToDelete.value = data;
 }
-function hideDeleteDialog() {
+async function hideDeleteDialog() {
+  await updateTable();
   showDeleteDialog.value = false;
   itemToDelete.value = null;
 }
