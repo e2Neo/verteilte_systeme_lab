@@ -1,7 +1,7 @@
 <template>
   <Button label="To Shopping" as="router-link" to="/shopping"></Button>
-  <Card v-if="serverResponse" style="margin-bottom: 1rem">
-    <template #header>
+  <Card v-if="serverResponse" style="margin-bottom: 1rem;margin-top: 1rem">
+    <template #title>
       <h1>Server says:</h1>
     </template>
     <template #content>
