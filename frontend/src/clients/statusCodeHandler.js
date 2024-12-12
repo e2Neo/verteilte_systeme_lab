@@ -5,9 +5,9 @@ import { ToastService } from "../services/ToastService";
 export function handleResponse(response) {
   console.log(response);
   switch (response.status) {
-    // Can be extended here with handlers for specific status codes
+    // Can be extended here with handlers for specific or common status codes
     case 201:
-      ToastService.success();
+      ToastService.success("Item created successfully.");
     default:
       break;
   }
@@ -17,8 +17,8 @@ export function handleResponse(response) {
 export function handleError(error) {
   console.error(error);
   switch (error.response.status) {
-    case 401: 
-      ToastService.error("Authorization needed. Please log in.") // Example for a specific error handler
+    case 404: 
+      ToastService.error("Item not found.")
     default:
       ToastService.error(error.status + ": " + error.response.statusText);
       break;
