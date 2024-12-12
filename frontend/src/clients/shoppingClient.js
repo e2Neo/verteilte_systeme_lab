@@ -5,7 +5,7 @@ export const ShoppingClient = {
         return RestClient.get("/api/shopping/" + name);
     },
     updateByName(name, body) {
-        return RestClient.update("/api/shopping/" + name, body);
+        return RestClient.put("/api/shopping/" + name, body);
     },
     deleteByName(name) {
         return RestClient.delete("/api/shopping/" + name);
