@@ -13,10 +13,11 @@ import Row from "primevue/row";
 import Dialog from "primevue/dialog";
 import Card from "primevue/card";
 import InputText from 'primevue/inputtext';
+import InputNumber from 'primevue/inputnumber';
 import 'primeicons/primeicons.css'
 import '@/assets/style.css'
 
-const app = createApp(App);
+export const app = createApp(App);
 app.use(PrimeVue, {
   theme: {
     preset: Aura,
@@ -34,4 +35,5 @@ app.component("Row", Row);
 app.component("Dialog", Dialog);
 app.component("Card", Card);
 app.component("InputText", InputText);
+app.component("InputNumber", InputNumber);
 app.mount("#app");

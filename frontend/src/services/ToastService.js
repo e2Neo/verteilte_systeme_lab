@@ -1,9 +1,9 @@
-
+import { app } from "@/main.js";
 const toastLifetime = 3000;
 
 export const ToastService = {
   info(message) {
-    $app.config.globalProperties.$toast.add({
+    app.config.globalProperties.$toast.add({
       severity: "info",
       summary: "Information",
       detail: message,
@@ -11,7 +11,7 @@ export const ToastService = {
     });
   },
   warn(message) {
-    $app.config.globalProperties.$toast.add({
+    app.config.globalProperties.$toast.add({
       severity: "warn",
       summary: "Warning",
       detail: message,
@@ -19,7 +19,7 @@ export const ToastService = {
     });
   },
   error(message) {
-    $app.config.globalProperties.$toast.add({
+    app.config.globalProperties.$toast.add({
       severity: "error",
       summary: "Error",
       detail: message,
@@ -27,7 +27,7 @@ export const ToastService = {
     });
   },
   success(message) {
-    $app.config.globalProperties.$toast.add({
+    app.config.globalProperties.$toast.add({
       severity: "success",
       summary: "Success",
       detail: message,
