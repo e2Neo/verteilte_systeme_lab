@@ -1,4 +1,10 @@
 import axios from "axios"
+import { handleResponse, handleError } from "./statusCodeHandler";
+
+axios.interceptors.response.use(
+  (response) => handleResponse(response),
+  (error) => handleError(error)
+);
 
 export const RestClient = {
   async get(endpoint) {
