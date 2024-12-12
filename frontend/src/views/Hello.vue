@@ -1,10 +1,11 @@
 <template>
-  <router-view />
-  <Toast />
+    Hello World
 </template>
 
 <script setup>
+
 </script>
 
 <style scoped>
+
 </style>

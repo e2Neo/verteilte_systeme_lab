@@ -1,5 +1,5 @@
 <template>
-    
+    Shopping
 </template>
 
 <script setup>
