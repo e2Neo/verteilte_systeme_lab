@@ -1,0 +1,36 @@
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+      - "3001:3001" # hmr-port
+    volumes:
+      - ./frontend:/app:cached # Makes the code inside editable from the host computer
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+
+  #
+  # From hse-24-winter repo:
+  #
+  shoppingdb: #will be hostname within docker network
+    image: postgres
+    environment:
+      POSTGRES_USER: hse24
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: shoppingdb
+    ports:
+      - "5432:5432"
+
+  backendspringboot:
+    image: maeddes/backendspringboot:hse24
+    build:
+      context: ./backendspringboot
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://shoppingdb:5432/shoppingdb
+      SPRING_DATASOURCE_USERNAME: hse24
+      SPRING_DATASOURCE_PASSWORD: password
+    depends_on:
+      - shoppingdb
+    ports:
+      - "8080:8080"
