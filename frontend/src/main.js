@@ -13,6 +13,8 @@ import Row from "primevue/row";
 import Dialog from "primevue/dialog";
 import Card from "primevue/card";
 import InputText from 'primevue/inputtext';
+import 'primeicons/primeicons.css'
+import '@/assets/style.css'
 
 const app = createApp(App);
 app.use(PrimeVue, {
