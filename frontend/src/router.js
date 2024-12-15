@@ -1,14 +1,29 @@
-import { createRouter, createWebHistory } from "vue-router";
-import Hello from "./views/Hello.vue";
-import Shopping from "./views/Shopping.vue";
+import {
+  createRouter as _createRouter,
+  createMemoryHistory,
+  createWebHistory,
+} from "vue-router";
 
-const routes = [
-  { path: "", component: Hello },
-  { path: "/shopping", component: Shopping },
-];
-const router = new createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes,
+// Auto generates routes from vue files under ./pages
+// https://vitejs.dev/guide/features.html#glob-import
+const pages = import.meta.glob("./pages/*.vue");
+
+const routes = Object.keys(pages).map((path) => {
+  const name = path.match(/\.\/pages(.*)\.vue$/)[1].toLowerCase();
+  const route = {
+    path: name === "/hello" ? "/" : name,
+    component: pages[path], // () => import('./pages/*.vue')
+  };
+  return route;
 });
 
-export default router;
+export function createRouter() {
+  return _createRouter({
+    // use appropriate history implementation for server/client
+    // import.meta.env.SSR is injected by Vite.
+    history: import.meta.env.SSR
+      ? createMemoryHistory("/")
+      : createWebHistory("/"),
+    routes,
+  });
+}
