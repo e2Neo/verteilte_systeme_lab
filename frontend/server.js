@@ -65,7 +65,6 @@ export async function createServer(
   app.use('*', async (req, res) => {
     try {
       const url = req.originalUrl.replace('/test/', '/')
-      console.log(isProd)
       let template, render
       if (!isProd) {
         // always read fresh template in dev
