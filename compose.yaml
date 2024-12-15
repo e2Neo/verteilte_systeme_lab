@@ -1,14 +1,14 @@
 services:
   frontend:
-    build: ./frontend
+    build: 
+      context: ./frontend
+      target: prod
     ports:
       - "3000:3000"
       - "3001:3001" # hmr-port
     volumes:
       - ./frontend:/app:cached # Makes the code inside editable from the host computer
       - /app/node_modules
-    environment:
-      - NODE_ENV=development
 
   #
   # From hse-24-winter repo:
