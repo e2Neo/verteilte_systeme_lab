@@ -1,4 +1,5 @@
-import { app } from "@/main.js";
+import { app } from "../entry-client";
+
 const toastLifetime = 3000;
 
 export const ToastService = {

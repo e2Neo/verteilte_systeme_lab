@@ -50,7 +50,7 @@
 </template>
 
 <script setup>
-import { ref, onBeforeMount, onBeforeUnmount } from "vue";
+import { ref, onBeforeMount } from "vue";
 import ShoppingMenu from "@/components/ShoppingMenu.vue";
 import ShoppingItemDeleteDialog from "./ShoppingItemDeleteDialog.vue";
 import { ShoppingClient } from "@/clients/shoppingClient";
