@@ -51,7 +51,7 @@ function renderPreloadLink(file) {
   if (file.endsWith('.js')) {
     return `<link rel="modulepreload" crossorigin href="${file}">`
   } else if (file.endsWith('.css')) {
-    return `<link rel="stylesheet" href="${file}">`
+    return `<link rel="stylesheet" type="text/css" href="${file}">`
   } else if (file.endsWith('.woff')) {
     return ` <link rel="preload" href="${file}" as="font" type="font/woff" crossorigin>`
   } else if (file.endsWith('.woff2')) {
