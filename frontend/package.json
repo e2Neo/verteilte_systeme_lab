@@ -7,7 +7,8 @@
     "dev": "node server.js",
     "build": "npm run build:client && npm run build:server",
     "build:client": "vite build --outDir dist/client",
-    "build:server": "vite build --outDir dist/server --ssr src/entry-server.js"
+    "build:server": "vite build --outDir dist/server --ssr src/entry-server.js",
+    "serve": "cross-env NODE_ENV=production node server.js"
   },
   "dependencies": {
     "@primevue/themes": "^4.2.5",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.4",
+    "cross-env": "^7.0.3",
     "vite": "^5.4.8"
   }
 }
