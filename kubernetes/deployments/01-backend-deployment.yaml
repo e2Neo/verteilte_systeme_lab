@@ -4,7 +4,8 @@ metadata:
   namespace: vs-lab
   name: vs-backend
   labels:
-    service: vs-backend
+    service: 
+      vs-backend
 spec:
   replicas: 1
   selector:

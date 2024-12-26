@@ -4,7 +4,8 @@ metadata:
   namespace: vs-lab
   name: vs-frontend
   labels:
-    service: vs-frontend
+    service: 
+      vs-frontend
 spec:
   replicas: 1
   selector:
