@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: vs-lab
+  name: vs-database
+spec:
+  ports:
+    - name: "db"
+      port: 5432
+      targetPort: 5432
+  selector:
+    service: vs-database
+    app: vs-lab
+    tier: database

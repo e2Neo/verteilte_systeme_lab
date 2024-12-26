@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  namespace: vs-lab
+  name: vs-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: vs-backend
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: vs-backend
+          image: e2neo/vs-lab/backend:latest
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: 256Mi
+              cpu: 500m
+          ports:
+            containerPort: 8080
+            hostPort: 8080
+            protocol: TCP
