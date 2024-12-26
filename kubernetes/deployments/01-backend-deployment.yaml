@@ -24,7 +24,7 @@ spec:
       restartPolicy: Always
       containers:
         - name: vs-backend
-          image: maeddes/backendspringboot
+          image: maeddes/backendspringboot:latest
           imagePullPolicy: Always
           resources:
             limits:
