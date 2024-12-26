@@ -6,10 +6,12 @@ metadata:
   labels:
     service: vs-frontend
 spec:
+  type: LoadBalancer
   ports:
     - name: "web"
-      port: 3000
+      port: 80
       targetPort: 3000
+      protocol: TCP
   selector:
     service: vs-frontend
     app: vs-lab
