@@ -8,37 +8,37 @@ spec:
   selector:
     matchLabels:
       service: vs-database
-    strategy:
-      type: Recreate
-    template:
-      spec:
-        restartPolicy: Always
-        volumes:
-          - name: vs-db-volume
-            persistentVolumeClaim:
-              claimName: pvc
-        containers:
-          - name: vs-database
-            image: postgres
-            args: ['-c', 'config_file=/etc/postgresql/postgresql.conf']
-            ports:
-              - containerPort: 5432
-                hostPort: 5432
-                protocol: TCP
-            resources:
-              requests:
-                memory: 256Mi
-                cpu: 100m
-            env:
-              - name: POSTGRES_DB
-                value: postgres
-              - name: POSTGRES_USER
-                value: admin
-              - name: POSTGRES_PASSWORD
-                value: some-secret-password
-            volumeMounts:
-              - mountPath: /var/lib/postgresql/data
-                subPath: postgres
-                name: vs-db-volume
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      restartPolicy: Always
+      volumes:
+        - name: vs-db-volume
+          persistentVolumeClaim:
+            claimName: pvc
+      containers:
+        - name: vs-database
+          image: postgres
+          args: ['-c', 'config_file=/etc/postgresql/postgresql.conf']
+          ports:
+            - containerPort: 5432
+              hostPort: 5432
+              protocol: TCP
+          resources:
+            requests:
+              memory: 256Mi
+              cpu: 100m
+          env:
+            - name: POSTGRES_DB
+              value: postgres
+            - name: POSTGRES_USER
+              value: admin
+            - name: POSTGRES_PASSWORD
+              value: some-secret-password
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              subPath: postgres
+              name: vs-db-volume
             
             
