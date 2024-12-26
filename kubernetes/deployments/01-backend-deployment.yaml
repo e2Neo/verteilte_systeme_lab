@@ -15,7 +15,7 @@ spec:
       restartPolicy: Always
       containers:
         - name: vs-backend
-          image: e2neo/vs-lab/backend:latest
+          image: maeddes/backendspringboot
           imagePullPolicy: Always
           resources:
             limits:

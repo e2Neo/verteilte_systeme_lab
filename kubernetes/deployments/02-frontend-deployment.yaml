@@ -15,7 +15,7 @@ spec:
       restartPolicy: Always
       containers:
         - name: vs-frontend
-          image: e2neo/vs-lab/frontend:latest
+          image: verteilte-systeme-lab_frontend:latest
           imagePullPolicy: Always
           resources:
             limits:
