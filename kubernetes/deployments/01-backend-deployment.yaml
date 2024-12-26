@@ -25,7 +25,7 @@ spec:
       containers:
         - name: vs-backend
           image: maeddes/backendspringboot:latest
-          imagePullPolicy: Always
+          imagePullPolicy: Never
           resources:
             limits:
               memory: 256Mi
