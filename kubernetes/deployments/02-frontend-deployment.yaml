@@ -14,6 +14,12 @@ spec:
   strategy:
     type: Recreate
   template:
+    metadata:
+      labels:
+        tier: frontend
+        app: vs-lab
+        service: 
+          vs-frontend
     spec:
       restartPolicy: Always
       containers:
