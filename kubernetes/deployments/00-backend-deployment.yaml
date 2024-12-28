@@ -55,9 +55,9 @@ spec:
             - name: POSTGRES_DB
               value: postgres
             - name: POSTGRES_USER
-              value: admin
+              value: hse24
             - name: POSTGRES_PASSWORD
-              value: some-secret-password
+              value: password
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               subPath: postgres
