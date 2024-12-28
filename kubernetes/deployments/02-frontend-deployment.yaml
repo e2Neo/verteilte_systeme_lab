@@ -25,7 +25,7 @@ spec:
       containers:
         - name: frontend
           image: vs-frontend
-          imagePullPolicy: Always
+          imagePullPolicy: Never
           resources:
             limits:
               memory: 256Mi
