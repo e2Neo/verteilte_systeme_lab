@@ -2,15 +2,15 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: vs-lab
-  name: vs-backend
+  name: backendspringboot
   labels:
     service: 
-      vs-backend
+      backendspringboot
 spec:
   replicas: 1
   selector:
     matchLabels:
-      service: vs-backend
+      service: backendspringboot
   strategy:
     type: Recreate
   template:
@@ -19,11 +19,11 @@ spec:
         tier: backend
         app: vs-lab
         service: 
-          vs-backend
+          backendspringboot
     spec:
       restartPolicy: Always
       containers:
-        - name: vs-backend
+        - name: backendspringboot
           image: maeddes/backendspringboot:hse24
           imagePullPolicy: Never
           resources:

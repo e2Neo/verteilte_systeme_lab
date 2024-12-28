@@ -2,15 +2,15 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: vs-lab
-  name: vs-frontend
+  name: frontend
   labels:
     service: 
-      vs-frontend
+      frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      service: vs-frontend
+      service: frontend
   strategy:
     type: Recreate
   template:
@@ -18,12 +18,12 @@ spec:
       labels:
         tier: frontend
         app: vs-lab
-        service: 
-          vs-frontend
+        service:
+          frontend
     spec:
       restartPolicy: Always
       containers:
-        - name: vs-frontend
+        - name: frontend
           image: verteilte-systeme-lab_frontend:latest
           imagePullPolicy: Always
           resources:
