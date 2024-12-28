@@ -6,6 +6,7 @@ metadata:
   labels:
     service: shoppingdb
 spec:
+  type: LoadBalancer
   ports:
     - name: "db"
       port: 5432
