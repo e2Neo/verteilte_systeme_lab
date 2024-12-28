@@ -53,7 +53,7 @@ spec:
               cpu: 100m
           env:
             - name: POSTGRES_DB
-              value: postgres
+              value: shoppingdb
             - name: POSTGRES_USER
               value: hse24
             - name: POSTGRES_PASSWORD
