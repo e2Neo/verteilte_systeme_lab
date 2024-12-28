@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: vs-lab
+  name: frontend
+  labels:
+    service: frontend
+spec:
+  type: LoadBalancer
+  ports:
+    - name: "web"
+      port: 80
+      targetPort: 3000
+      protocol: TCP
+  selector:
+    service: frontend
+    app: vs-lab
+    tier: frontend

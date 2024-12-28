@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: vs-lab
+  name: frontend
+  labels:
+    service: 
+      frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        tier: frontend
+        app: vs-lab
+        service:
+          frontend
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: frontend
+          image: vs-frontend
+          imagePullPolicy: Never
+          resources:
+            limits:
+              memory: 256Mi
+              cpu: 500m
+          ports:
+            - containerPort: 3000
+              hostPort: 3000
+              protocol: TCP

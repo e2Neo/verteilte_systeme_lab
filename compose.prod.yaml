@@ -2,12 +2,11 @@ services:
   frontend:
     build: 
       context: ./frontend
-      target: dev
+      target: prod
+    image: vs-frontend
     ports:
       - "3000:3000"
-      - "3001:3001" # hmr-port
     volumes:
-      - ./frontend:/app:cached # Makes the code inside editable from the host computer
       - /app/node_modules
 
   #
