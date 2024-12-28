@@ -2,25 +2,25 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: vs-lab
-  name: shoppingdb
+  name: backendspringboot
   labels:
-    service:
-      shoppingdb
+    service: 
+      backendspringboot
 spec:
   replicas: 1
   selector:
     matchLabels:
-      service: shoppingdb
+      service: backendspringboot
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        tier: database
+        tier: backend
         app: vs-lab
-        service: shoppingdb
+        service: 
+          backendspringboot
     spec:
-      restartPolicy: Always
       volumes:
         - name: vs-db-volume
           persistentVolumeClaim:
@@ -29,6 +29,17 @@ spec:
             name: vs-postgres-conf
           name: vs-postgres-conf
       containers:
+        - name: backendspringboot
+          image: maeddes/backendspringboot:hse24
+          imagePullPolicy: Never
+          resources:
+            limits:
+              memory: 256Mi
+              cpu: 500m
+          ports:
+            - containerPort: 8080
+              hostPort: 8080
+              protocol: TCP
         - name: shoppingdb
           image: postgres
           args: ['-c', 'config_file=/etc/postgresql/postgresql.conf']
@@ -53,5 +64,3 @@ spec:
               name: vs-db-volume
             - mountPath: /etc/postgresql
               name: vs-postgres-conf
-            
-            
