@@ -21,7 +21,6 @@ spec:
         service: 
           backendspringboot
     spec:
-      restartPolicy: Always
       containers:
         - name: backendspringboot
           image: maeddes/backendspringboot:hse24
