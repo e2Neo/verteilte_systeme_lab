@@ -6,6 +6,7 @@ metadata:
   labels:
     service: backendspringboot
 spec:
+  type: LoadBalancer
   ports:
     - name: "app"
       port: 8080
