@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: vs-lab
+  name: backendspringboot
+  labels:
+    service: 
+      backendspringboot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: backendspringboot
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        tier: backend
+        app: vs-lab
+        service: 
+          backendspringboot
+    spec:
+      volumes:
+        - name: vs-db-volume
+          persistentVolumeClaim:
+            claimName: pvc
+        - configMap:
+            name: vs-postgres-conf
+          name: vs-postgres-conf
+      containers:
+        - name: backendspringboot
+          image: maeddes/backendspringboot:hse24
+          imagePullPolicy: Never
+          resources:
+            limits:
+              memory: 256Mi
+              cpu: 500m
+          ports:
+            - containerPort: 8080
+              hostPort: 8080
+              protocol: TCP
+        - name: shoppingdb
+          image: postgres
+          args: ['-c', 'config_file=/etc/postgresql/postgresql.conf']
+          ports:
+            - containerPort: 5432
+              hostPort: 5432
+              protocol: TCP
+          resources:
+            requests:
+              memory: 256Mi
+              cpu: 100m
+          env:
+            - name: POSTGRES_DB
+              value: shoppingdb
+            - name: POSTGRES_USER
+              value: hse24
+            - name: POSTGRES_PASSWORD
+              value: password
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              subPath: postgres
+              name: vs-db-volume
+            - mountPath: /etc/postgresql
+              name: vs-postgres-conf
