@@ -24,7 +24,7 @@ spec:
       restartPolicy: Always
       containers:
         - name: frontend
-          image: verteilte-systeme-lab_frontend:latest
+          image: vs-frontend
           imagePullPolicy: Always
           resources:
             limits:
