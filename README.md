@@ -31,6 +31,18 @@ Contain the actuall containers of the app.
 Allow communication between containers and with the internet (LoadBalancers)
 I used Loadbalancers in all 3 Services to allow access to public and to be able to access the database with pgadmin if needed. This needs to be configured too.
 
+### Startup of the cluster
+
+If not done already, use ``kubectl create namespace vs-lab`` to create the namespace in the cluster.
+
+Now we need to apply the configurations by using ``kubectl apply -f kubernetes/<stage-name>`` e.g. ``kubectl apply -f kubernetes/configmaps``.
+
+It is recommended to do it in the order of the above listed stages.
+
+After changes of any configurations, use ``kubectl rollout restart <resource>`` to restart the app
+
+NOTE: This also creates backend and database. They can be removed if needed.
+
 ## 12 Factor Application
 
 ### I. Codebase
@@ -88,5 +100,5 @@ Secure credentials with secrets. Since this is a uni project which is not going 
 
 Fix backend - database deployments:
 
- I had connection issues between database and backend, which i could only solve by placing both containers into the same deployment at the time.
+I had connection issues between database and backend, which i could only solve by placing both containers into the same deployment at the time.
 This can definetly be improved, but i currently dont have time for it. The current version is working fine, but the backend doesnt scale well.
