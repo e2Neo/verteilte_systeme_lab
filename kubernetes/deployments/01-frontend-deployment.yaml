@@ -26,6 +26,12 @@ spec:
         - name: frontend
           image: vs-frontend
           imagePullPolicy: Never
+          env:
+          - name: BACKEND_URL
+            valueFrom:
+              configMapKeyRef:
+                name: vs-env
+                key: BACKEND_URL
           resources:
             limits:
               memory: 256Mi

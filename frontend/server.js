@@ -5,6 +5,7 @@ import express from "express";
 import { createProxyMiddleware } from "http-proxy-middleware";
 
 const isTest = process.env.VITEST;
+const BACKEND_URL = process.env.BACKEND_URL
 
 export async function createServer(
   root = process.cwd(),
@@ -63,7 +64,7 @@ export async function createServer(
   app.use(
     "/api",
     createProxyMiddleware({
-      target: "http://backendspringboot:8080/api",
+      target: BACKEND_URL + "/api",
       changeOrigin: true,
       logLevel: "debug",
     })
@@ -72,7 +73,7 @@ export async function createServer(
   app.use(
     "/backend",
     createProxyMiddleware({
-      target: "http://backendspringboot:8080",
+      target: BACKEND_URL,
       changeOrigin: true,
       pathRewrite: {
         "^/api": "",

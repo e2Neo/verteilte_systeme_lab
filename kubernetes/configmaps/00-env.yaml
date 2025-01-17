@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: vs-env
+  namespace: vs-lab
+data:
+  BACKEND_URL: http://backendspringboot:8080

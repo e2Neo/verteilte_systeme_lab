@@ -4,6 +4,8 @@ services:
       context: ./frontend
       target: prod
     image: vs-frontend
+    environment:
+      - BACKEND_URL=http://backendspringboot:8080
     ports:
       - "3000:3000"
     volumes:

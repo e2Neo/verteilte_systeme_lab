@@ -3,6 +3,9 @@ services:
     build: 
       context: ./frontend
       target: dev
+    image: vs-frontend-dev
+    environment:
+      - BACKEND_URL=http://backendspringboot:8080
     ports:
       - "3000:3000"
       - "3001:3001" # hmr-port
@@ -26,8 +29,6 @@ services:
 
   backendspringboot:
     image: maeddes/backendspringboot:hse24
-    build:
-      context: ./backendspringboot
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://shoppingdb:5432/shoppingdb
       SPRING_DATASOURCE_USERNAME: hse24
